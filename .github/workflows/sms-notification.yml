@@ -14,6 +14,10 @@ jobs:
                   TO: ${{ secrets.TO_PHONE_NUMBER }}
                   MESSAGE: ${{ github.event_name }} on ${{ github.repository }} by ${{ github.actor }} has ${{github.event.workflow_run.conclusion}}. Check it out at ${{ github.event.workflow_run.url }}
               run: |
-                  from africastalking.SMS import SMS
-                  sms = SMS(username='${{ secrets.AT_USERNAME }}', api_key='${{ secrets.AT_API_KEY }}')
-                  response = sms.send(message="Workflows was successful", recipients=[env.TO])
+                  import africastalking
+                  africastalking.initialize(username='${{ secrets.AT_USERNAME }}', api_key='${{ secrets.AT_API_KEY }}')
+                  sms = africastalking.SMS
+                  response = sms.send(
+                      message='${{ env.MESSAGE }}',
+                      recipients=['${{ env.TO }}']
+                  )
