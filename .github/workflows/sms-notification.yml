@@ -8,7 +8,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
             - name: Set up Python 3.9
               uses: actions/setup-python@v2
               with:
@@ -21,7 +21,7 @@ jobs:
               env:
                   API_KEY: ${{ secrets.API_KEY }}
                   USERNAME: ${{ secrets.USERNAME }}
-                  PHONE_NUMBER: ${{ secrets.PHONE_NUMBER }}
+                  PHONE_NUMBER: ${{ secrets.TO_PHONE_NUMBER }}
               run: |
                   import africastalking
                   africastalking.initialize(USERNAME, API_KEY)
