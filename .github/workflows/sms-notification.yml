@@ -19,8 +19,8 @@ jobs:
                   pip install africastalking
             - name: Send SMS Notification
               env:
-                  API_KEY: ${{ secrets.API_KEY }}
-                  USERNAME: ${{ secrets.USERNAME }}
+                  API_KEY: ${{ secrets.AT_API_KEY }}
+                  USERNAME: ${{ secrets.AT_USERNAME }}
                   PHONE_NUMBER: ${{ secrets.TO_PHONE_NUMBER }}
               run: |
                   import africastalking
