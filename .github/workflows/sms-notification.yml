@@ -12,7 +12,7 @@ jobs:
             - name: Send SMS
               env:
                   TO: ${{ secrets.TO_PHONE_NUMBER }}
-                  MESSAGE: ${{ github.event_name }} on ${{ github.repository }} by ${{ github.actor }} has ${{github.event.workflow_run.conclusion}}. Check it out at ${{ github.event.workflow_run.url }}
+                  MESSAGE: ${{ github.event_name }} on ${{ github.repository }} by ${{ github.actor }}
               run: |
                   import africastalking
                   africastalking.initialize(username='${{ secrets.AT_USERNAME }}', api_key='${{ secrets.AT_API_KEY }}')
