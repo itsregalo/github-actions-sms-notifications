@@ -1,8 +1,8 @@
 import africastalking
 import os
 
-AT_API_KEY = os.environ['AT_API_KEY']
-AT_USERNAME = os.environ['AT_USERNAME']
+AT_API_KEY = os.environ['API_KEY']
+AT_USERNAME = os.environ['USERNAME']
 AT_PHONE_NUMBER = os.environ['PHONE_NUMBER']
 
 africastalking.initialize(AT_USERNAME, AT_API_KEY)
