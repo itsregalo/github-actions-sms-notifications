@@ -23,7 +23,4 @@ jobs:
                   USERNAME: ${{ secrets.AT_USERNAME }}
                   PHONE_NUMBER: ${{ secrets.TO_PHONE_NUMBER }}
               run: |
-                  import africastalking
-                  africastalking.initialize(USERNAME, API_KEY)
-                  sms = africastalking.SMS
-                  response = sms.send("Hello World", [PHONE_NUMBER])
+                  python send_sms.py
