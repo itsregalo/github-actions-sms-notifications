@@ -13,17 +13,17 @@ jobs:
               uses: actions/setup-python@v2
               with:
                   python-version: 3.9
-            - name: Install AT Python SDK
-              run: pip install africastalking
-            - name: Send SMS
+            - name: Install dependencies
+              run: |
+                  python -m pip install --upgrade pip
+                  pip install africastalking
+            - name: Send SMS Notification
               env:
-                  TO: ${{ secrets.TO_PHONE_NUMBER }}
-                  MESSAGE: ${{ github.event_name }} on ${{ github.repository }} by ${{ github.actor }}
+                  API_KEY: ${{ secrets.API_KEY }}
+                  USERNAME: ${{ secrets.USERNAME }}
+                  PHONE_NUMBER: ${{ secrets.PHONE_NUMBER }}
               run: |
                   import africastalking
-                  africastalking.initialize(username='${{ secrets.AT_USERNAME }}', api_key='${{ secrets.AT_API_KEY }}')
+                  africastalking.initialize(USERNAME, API_KEY)
                   sms = africastalking.SMS
-                  response = sms.send(
-                      message='${{ env.MESSAGE }}',
-                      recipients=['${{ env.TO }}']
-                  )
+                  response = sms.send("Hello World", [PHONE_NUMBER])
