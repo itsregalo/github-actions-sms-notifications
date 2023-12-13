@@ -22,5 +22,6 @@ jobs:
                   API_KEY: ${{ secrets.AT_API_KEY }}
                   USERNAME: ${{ secrets.AT_USERNAME }}
                   PHONE_NUMBER: ${{ secrets.TO_PHONE_NUMBER }}
+                  MESSAGE: ${{ github.event_name }} on ${{ github.repository }} by ${{ github.actor }} has ${{github.event.workflow_run.conclusion}}. Check it out at ${{ github.event.workflow_run.url }}
               run: |
-                  python send_sms.py
+                  python send_sms.py "$MESSAGE"
